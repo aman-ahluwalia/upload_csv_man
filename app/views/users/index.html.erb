@@ -1,0 +1,28 @@
+<%= flash[:notice] %>
+<div>
+  <h4>Import data!</h4>
+  <%= form_tag import_users_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import from file" %>
+  <% end %>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>date</th>
+      <th>number</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.date %></td>
+        <td><%= user.number %></td>
+        <td><%= user.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
